@@ -25,32 +25,26 @@ public class DialogWin extends JDialog {
         JPanel mainPanel = new JPanel(new GridLayout(6, 2, 10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         
-        // Тип пиццы
         mainPanel.add(new JLabel("Тип пиццы:"));
         typeComboBox = new JComboBox<>(new String[]{"Пепперони", "Сырная", "Мясная"});
         mainPanel.add(typeComboBox);
         
-        // Цена
         mainPanel.add(new JLabel("Цена (руб):"));
         priceField = new JTextField();
         mainPanel.add(priceField);
         
-        // Вес
         mainPanel.add(new JLabel("Вес (г):"));
         weightField = new JTextField();
         mainPanel.add(weightField);
         
-        // Диаметр
         mainPanel.add(new JLabel("Диаметр (см):"));
         diameterField = new JTextField();
         mainPanel.add(diameterField);
         
-        // Калорийность
         mainPanel.add(new JLabel("Калорийность (ккал):"));
         caloriesField = new JTextField();
         mainPanel.add(caloriesField);
         
-        // Заполняем поля если редактируем существующую пиццу
         if (existingFood != null) {
             if (existingFood instanceof Peperoni) {
                 typeComboBox.setSelectedIndex(0);
@@ -66,7 +60,6 @@ public class DialogWin extends JDialog {
             caloriesField.setText(String.valueOf(existingFood.getCalories()));
         }
         
-        // Кнопки
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         JButton okButton = new JButton("OK");
         JButton cancelButton = new JButton("Отмена");
@@ -87,12 +80,10 @@ public class DialogWin extends JDialog {
         buttonPanel.add(okButton);
         buttonPanel.add(cancelButton);
         
-        // Добавляем все на диалог
         setLayout(new BorderLayout());
         add(mainPanel, BorderLayout.CENTER);
         add(buttonPanel, BorderLayout.SOUTH);
         
-        // Делаем OK кнопкой по умолчанию
         getRootPane().setDefaultButton(okButton);
     }
     
@@ -140,7 +131,6 @@ public class DialogWin extends JDialog {
                     break;
             }
         } catch (NumberFormatException e) {
-            // Не должно произойти, так как валидация уже выполнена
             food = null;
         }
     }

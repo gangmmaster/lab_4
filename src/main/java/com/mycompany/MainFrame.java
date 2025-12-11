@@ -20,16 +20,13 @@ public class MainFrame extends JFrame {
     }
 
     private void initUI() {
-        // Создаем панели
         JPanel mainPanel = new JPanel(new BorderLayout(10, 10));
         mainPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         
-        // Левая панель со списком
         JPanel listPanel = new JPanel(new BorderLayout());
         listPanel.setBorder(BorderFactory.createTitledBorder("Список пицц"));
         listPanel.add(new JScrollPane(pizzaList), BorderLayout.CENTER);
         
-        // Правая панель с кнопками
         JPanel buttonPanel = new JPanel();
         buttonPanel.setLayout(new GridLayout(6, 1, 5, 5));
         
@@ -40,7 +37,6 @@ public class MainFrame extends JFrame {
         JButton clearButton = new JButton("Очистить все");
         JButton exitButton = new JButton("Выход");
         
-        // Добавляем обработчики событий
         addButton.addActionListener(e -> showAddDialog());
         editButton.addActionListener(e -> showEditDialog());
         deleteButton.addActionListener(e -> deleteSelected());
@@ -55,7 +51,6 @@ public class MainFrame extends JFrame {
         buttonPanel.add(clearButton);
         buttonPanel.add(exitButton);
         
-        // Добавляем панели на главное окно
         mainPanel.add(listPanel, BorderLayout.CENTER);
         mainPanel.add(buttonPanel, BorderLayout.EAST);
         
@@ -63,7 +58,6 @@ public class MainFrame extends JFrame {
     }
 
     private void loadSampleData() {
-        // Добавляем примеры пицц
         repository.add(new Peperoni(12.5, 450, 30, 280));
         repository.add(new Cheese(10.5, 420, 30, 320));
         repository.add(new Meat(15.5, 500, 30, 350));
@@ -183,7 +177,6 @@ public class MainFrame extends JFrame {
     }
 
     public static void main(String[] args) {
-        // Устанавливаем Look and Feel для лучшего внешнего вида
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
